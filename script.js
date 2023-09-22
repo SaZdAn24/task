@@ -3,22 +3,30 @@ button.innerText = "добавить";
 const inputFirst = document.createElement("input"); //создали два импута
 const inputSecond = document.createElement("input");
 
-const buttonSecond = document.createElement("button"); // cоздание кнопки и оно со словом отправить
-buttonSecond.innerText = "отправить";
+const buttonSecond = document.createElement("button"); //создали кнопку
+buttonSecond.innerText = "отправить"; //дали название кнопке <отправить>
 
-const root = document.querySelector(".root"); // нашли див
+const root = document.querySelector(".root"); //нашли див под нозванием <рот>
 
-const getCard = (name, surname) => {
-  // создаем переменную в которой пишем разметку штмл
-  const html = ` <h2> ${name} </h2> 
-					<h2> ${surname} </h2>
-									`;
-
-  return html;
-};
-
+// Функция для создания и добавления карточки
 const addCard = (name, surname) => {
-  root.insertAdjacentHTML("beforeend", getCard(name, surname)); //кладем в див root функцию getCard с помощью insertAdjacentHTML
+  const html = `<h2>${name} ${surname}</h2>`; // создали карточку
+
+  const cardDiv = document.createElement("div"); // создали <див>
+  cardDiv.innerHTML = html; // сказали что кардив принимает  нтмл
+
+  const crossSimvol = "x";
+  const crossElement = document.createElement("span"); // это весь код для крестика
+  crossElement.textContent = crossSimvol;
+  crossElement.className = "close-icon";
+
+  // Навешиваем обработчик клика на крестик для удаления карточки
+  crossElement.addEventListener("click", () => {
+    root.removeChild(cardDiv); // Удаляем карточку
+  });
+
+  cardDiv.appendChild(crossElement); // Добавляем крестик внутрь карточки
+  root.appendChild(cardDiv); // Добавляем карточку в корневой контейнер
 };
 
 const toggleStateInputs = (value) => {

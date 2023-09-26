@@ -7,3 +7,7 @@ body {
   left: 240px;
   font-size: 25px;
 }
+.sumStrinr {
+  display: flex;
+  justify-content: center;
+}

@@ -68,7 +68,14 @@ buttonSecond.addEventListener("click", function () {
   const name = inputFirst.value; // создаем переменную и говорим что ее значение то что мы потом напишем
   const surname = inputSecond.value; // создаем переменную и говорим что ее значение то что мы потом напишем
 
-  addCard(name, surname); // вызываем функцию со значение имени
+  if (name !== "" && surname !== "") {
+    // Проверяем, что оба импута не пусты
+    addCard(name, surname); // вызываем функцию со значениями имени и фамилии
+    inputFirst.value = ""; // Очищаем первый input
+    inputSecond.value = ""; // Очищаем второй input
+    button.style.display = "block"; // показываем первую кнопку
+    toggleStateInputs("none"); // скрываем input'ы и вторую кнопку
+  }
 });
 
 toggleStateInputs("none"); //говорим что она у нас не видна на экране
